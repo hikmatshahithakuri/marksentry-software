@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kankali Secondary School - Marks Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="school-info">
+                <img src="https://via.placeholder.com/50" alt="School Logo" class="logo">
+                <div>
+                    <h1>Kankali Secondary School</h1>
+                    <p>Class 6 - Monthly Test Exam Marks Collection</p>
+                </div>
+            </div>
+            <div class="user-info">
+                <span>Welcome, Class Teacher</span>
+                <div class="avatar">CT</div>
+            </div>
+        </header>
+
+        <nav>
+            <ul>
+                <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="#"><i class="fas fa-upload"></i> Upload Marks</a></li>
+                <li><a href="#"><i class="fas fa-chart-bar"></i> Reports</a></li>
+                <li><a href="#"><i class="fas fa-users"></i> Students</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <div class="dashboard-header">
+                <h2>Monthly Test Exam Marks Dashboard</h2>
+                <div class="controls">
+                    <select id="examSelect">
+                        <option value="">Select Exam</option>
+                        <option value="1">First Monthly Test</option>
+                        <option value="2">Second Monthly Test</option>
+                        <option value="3">Third Monthly Test</option>
+                        <option value="4">Fourth Monthly Test</option>
+                        <option value="5">Fifth Monthly Test</option>
+                        <option value="6">Sixth Monthly Test</option>
+                        <option value="7">Seventh Monthly Test</option>
+                        <option value="8">Eighth Monthly Test</option>
+                    </select>
+                    <select id="subjectSelect">
+                        <option value="">All Subjects</option>
+                        <option value="math">Mathematics</option>
+                        <option value="science">Science</option>
+                        <option value="english">English</option>
+                        <option value="nepali">Nepali</option>
+                        <option value="social">Social Studies</option>
+                        <option value="computer">Computer</option>
+                    </select>
+                    <button class="btn btn-primary" id="refreshBtn">Refresh Data</button>
+                </div>
+            </div>
+
+            <div class="stats-cards">
+                <div class="card">
+                    <div class="card-icon bg-blue">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Total Students</h3>
+                        <p id="totalStudents">42</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon bg-green">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Subjects</h3>
+                        <p>6</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon bg-orange">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Marks Submitted</h3>
+                        <p id="marksSubmitted">3/6</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-icon bg-purple">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="card-info">
+                        <h3>Current Exam</h3>
+                        <p>Third Monthly Test</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="upload-section">
+                <h3>Upload Marks for Teachers</h3>
+                <div class="upload-box">
+                    <div class="upload-instructions">
+                        <p><i class="fas fa-info-circle"></i> Teachers can upload marks for their subjects here. The system will automatically update the Google Sheet.</p>
+                        <div class="form-group">
+                            <label for="teacherName">Teacher Name</label>
+                            <input type="text" id="teacherName" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="teacherSubject">Subject</label>
+                            <select id="teacherSubject">
+                                <option value="">Select Subject</option>
+                                <option value="math">Mathematics</option>
+                                <option value="science">Science</option>
+                                <option value="english">English</option>
+                                <option value="nepali">Nepali</option>
+                                <option value="social">Social Studies</option>
+                                <option value="computer">Computer</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="examMonth">Exam Month</label>
+                            <select id="examMonth">
+                                <option value="">Select Exam</option>
+                                <option value="1">First Monthly Test</option>
+                                <option value="2">Second Monthly Test</option>
+                                <option value="3">Third Monthly Test</option>
+                                <option value="4">Fourth Monthly Test</option>
+                                <option value="5">Fifth Monthly Test</option>
+                                <option value="6">Sixth Monthly Test</option>
+                                <option value="7">Seventh Monthly Test</option>
+                                <option value="8">Eighth Monthly Test</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="file-upload">
+                        <input type="file" id="marksFile" accept=".csv, .xlsx">
+                        <label for="marksFile" class="file-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>Choose file or drag here</span>
+                            <p>CSV or Excel format only</p>
+                        </label>
+                        <button class="btn btn-upload" id="uploadBtn">Upload Marks</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="marks-table">
+                <h3>Student Marks Overview</h3>
+                <div class="table-responsive">
+                    <table id="marksData">
+                        <thead>
+                            <tr>
+                                <th>Roll No.</th>
+                                <th>Student Name</th>
+                                <th>Math</th>
+                                <th>Science</th>
+                                <th>English</th>
+                                <th>Nepali</th>
+                                <th>Social</th>
+                                <th>Computer</th>
+                                <th>Total</th>
+                                <th>Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be loaded here from Google Sheets -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 Kankali Secondary School. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Help Center</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal for upload success -->
+    <div class="modal" id="successModal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-icon success">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Upload Successful!</h3>
+            <p>The marks have been successfully uploaded to the system.</p>
+            <button class="btn btn-primary" id="modalOkBtn">OK</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
